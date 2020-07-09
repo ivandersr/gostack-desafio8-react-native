@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback, useState } from 'react';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
-import { View } from 'react-native';
+import { View, RefreshControl } from 'react-native';
 
 import {
   Container,
@@ -38,24 +38,42 @@ interface Product {
 const Cart: React.FC = () => {
   const { increment, decrement, products } = useCart();
 
-  function handleIncrement(id: string): void {
-    // TODO
-  }
+  // const [refreshing, setRefreshing] = useState(false);
 
-  function handleDecrement(id: string): void {
-    // TODO
-  }
+  // const onRefresh = useCallback((refreshState: boolean) => {
+  //   setRefreshing(refreshState);
+  // }, []);
+
+  const handleIncrement = useCallback(
+    (id: string) => {
+      increment(id);
+    },
+    [increment],
+  );
+
+  const handleDecrement = useCallback(
+    (id: string) => {
+      decrement(id);
+    },
+    [decrement],
+  );
 
   const cartTotal = useMemo(() => {
-    // TODO RETURN THE SUM OF THE QUANTITY OF THE PRODUCTS IN THE CART
+    const totalCost = products.reduce(
+      (total, current) => total + current.price * current.quantity,
+      0,
+    );
 
-    return formatValue(0);
+    return formatValue(totalCost);
   }, [products]);
 
   const totalItensInCart = useMemo(() => {
-    // TODO RETURN THE SUM OF THE QUANTITY OF THE PRODUCTS IN THE CART
+    const numberOfProducts = products.reduce(
+      (total, current) => total + Number(current.quantity),
+      0,
+    );
 
-    return 0;
+    return numberOfProducts;
   }, [products]);
 
   return (
