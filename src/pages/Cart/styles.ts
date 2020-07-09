@@ -31,7 +31,6 @@ export const Product = styled.View`
   background: #fff;
   padding: 15px 10px;
   border-radius: 5px;
-  height: 50px;
   margin: 5px;
   flex: 1;
   flex-direction: row;
@@ -84,10 +83,10 @@ export const ProductQuantity = styled.Text`
 `;
 
 export const ActionContainer = styled.View`
-  align-self: flex-end;
+  flex-direction: column
+  align-self: center;
   align-items: center;
   justify-content: space-between;
-
   margin-left: auto;
 `;
 
