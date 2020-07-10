@@ -16,14 +16,13 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const ProductContainer = styled.View`
+  flex: 1;
   border-radius: 5px;
   margin-top: 60px;
-  flex: 1;
   flex-direction: row;
 `;
 
 export const ProductList = styled(FlatList as new () => FlatList<Product>)`
-  flex: 1;
   padding: 0 10px;
 `;
 
@@ -83,7 +82,7 @@ export const ProductQuantity = styled.Text`
 `;
 
 export const ActionContainer = styled.View`
-  flex-direction: column
+  flex-direction: column;
   align-self: center;
   align-items: center;
   justify-content: space-between;
